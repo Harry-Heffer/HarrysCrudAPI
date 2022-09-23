@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <title>Homepage</title>
+    <link rel="stylesheet" href="./Site.css" />
+</head>
+<body>
+    <main>
+        <div class="Container-1">
+            <h1>Harry's CRUD API</h1>
+            <hr />
+            <p>Welcome to the font end for Harry's CRUD API, please use the below functions to test Create, Read, Update and Delete with the API.</p>
+            <p>This page uses JavaScript to make calls to the API.</p>
+            <hr />
+        </div>
+
+        <div class="Container">
+            <h3>Get</h3>
+            <p>To Get all accounts from the database, please click <button id="get" onclick="getItems()">Here</button></p>
+            <p id="getError"></p>
+
+            <table id="table">
+                <tr>
+                    <th>Account Id</th>
+                    <th>Account Code</th>
+                    <th>Account Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Payment Terms</th>
+                    <th>Terms Type</th>
+                </tr>
+                <tbody id="accountsTableInput">
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="Container">
+            <h3>Get by id</h3>
+            <p>To Get an account by Id, please use the following.</p>
+            <p id="getByIdError"></p>
+
+            <form action="javascript:void(0);" method="get" onsubmit="getById()">
+                <input type="number" name="Id" id="get-Id" />
+                <button type="submit">Submit</button>
+            </form>
+
+            <table id="IdTable">
+                <tr>
+                    <th>Account Id</th>
+                    <th>Account Code</th>
+                    <th>Account Name</th>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Payment Terms</th>
+                    <th>Terms Type</th>
+                </tr>
+                <tbody id="accountByIdTableInput">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="Container">
+            <h3>Create</h3>
+            <p>To add a new account to the database please use the following.</p>
+            <p id="createError"></p>
+
+            <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+                <input type="text" id="add-accountCode" placeholder="Account Code" />
+                <input type="text" id="add-accountName" placeholder="Account Name" />
+                <input type="text" id="add-address" placeholder="Address" />
+                <input type="text" id="add-phoneNumber" placeholder="Phone Number" />
+                <input type="text" id="add-emailAddress" placeholder="Email Address" />
+                <input type="text" id="add-paymentTerms" placeholder="Payment Terms" />
+                <input type="text" id="add-termsType" placeholder="Terms Type" />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+        <div class="Container">
+            <h3>Update</h3>
+            <p>To update an existing record on the database please use the following.</p>
+            <p id="updateError"></p>
+
+            <form action="javascript:void(0);" onsubmit="updateItem()">
+                <input type="text" id="update-accountCode" placeholder="Account Code" />
+                <input type="text" id="update-accountName" placeholder="Account Name" />
+                <input type="text" id="update-address" placeholder="Address" />
+                <input type="text" id="update-phoneNumber" placeholder="Phone Number" />
+                <input type="text" id="update-emailAddress" placeholder="Email Address" />
+                <input type="text" id="update-paymentTerms" placeholder="Payment Terms" />
+                <input type="text" id="update-termsType" placeholder="Terms Type" />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+        <div class="Container">
+            <h3>Delete</h3>
+            <p>Please input the account code for the account you would like to delete.</p>
+            <p id="deleteError"></p>
+
+            <form action="javascript:void(0);" onsubmit="deleteItem()">
+                <input type="text" id="delete-accountCode" placeholder="Account Code" />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+    </main>
+    <script src="./Site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+  
+    </script>
+</body>
+</html>

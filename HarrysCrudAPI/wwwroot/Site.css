@@ -1,0 +1,67 @@
+﻿input[type='submit'], button, [aria-label] {
+    cursor: pointer;
+}
+
+#editForm {
+    display: none;
+}
+
+table {
+    border-collapse: collapse;
+    display: none;
+    margin-top: 16px;
+}
+
+th {
+    background-color: #f8f8f8;
+    border: 1px solid;
+    padding: 5px;
+    background-color: darkgrey;
+}
+
+td {
+    border: 1px solid;
+    padding: 5px;
+    background-color: white;
+}
+
+html {
+    background-color: antiquewhite;
+}
+
+#getResponse {
+    display: none;
+}
+
+#getByIdError {
+    color: red;
+}
+
+#getError {
+    color: red; 
+}
+
+#createError {
+    color: red;
+}
+
+#updateError {
+    color: red; 
+}
+
+#deleteError {
+    color: red;
+}
+
+.Container {
+    background-color: cadetblue;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    color: black;
+}
+
+.Container-1 {
+    padding: 13px;
+}
