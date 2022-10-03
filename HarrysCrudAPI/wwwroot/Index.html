@@ -14,7 +14,7 @@
             <p>This page uses JavaScript to make calls to the API.</p>
             <hr />
         </div>
-
+        <h2>Accounts</h2>
         <div class="Container">
             <h3>Get</h3>
             <p>To Get all accounts from the database, please click <button id="get" onclick="getItems()">Here</button></p>
@@ -35,7 +35,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="Container">
             <h3>Get by id</h3>
             <p>To Get an account by Id, please use the following.</p>
@@ -78,7 +78,7 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
-        
+
         <div class="Container">
             <h3>Update</h3>
             <p>To update an existing record on the database please use the following.</p>
@@ -95,7 +95,7 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
-        
+
         <div class="Container">
             <h3>Delete</h3>
             <p>Please input the account code for the account you would like to delete.</p>
@@ -107,6 +107,87 @@
             </form>
         </div>
 
+        <hr />
+        <h2>Invoices</h2>
+        <hr />
+
+        <div class="Container">
+            <h3>Get</h3>
+            <p>To Get all Invoices from the database, please click <button id="getInvoices" onclick="getItemsInvoices()">Here</button></p>
+            <p id="getErrorInvoices"></p>
+
+            <table id="tableInvoices">
+                <tr>
+                    <th>Invoice Id</th>
+                    <th>Invoice Number</th>
+                    <th>Invoice Date</th>
+                    <th>Invoice Due Date</th>
+                    <th>Net</th>
+                    <th>Vat</th>
+                    <th>Gross</th>
+                    <th>Description</th>
+                    <th>Account Code</th>
+                    <th>Account Name</th>
+                    <th>Status</th>
+                </tr>
+                <tbody id="invoicesTableInput">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="Container">
+            <h3>Get by Account Code</h3>
+            <p>To Get Invoices by Account Code, please use the following.</p>
+            <p id="getByAccountCodeErrorInvoices"></p>
+
+            <form action="javascript:void(0);" method="get" onsubmit="getByAccountCodeInvoices()">
+                <input type="text" name="AccountCode" id="get-AccountCodeInvoices" />
+                <button type="submit">Submit</button>
+            </form>
+
+            <table id="accountCodeInvoicesTable">
+                <tr>
+                    <th>Invoice Id</th>
+                    <th>Invoice Number</th>
+                    <th>Invoice Date</th>
+                    <th>Invoice Due Date</th>
+                    <th>Net</th>
+                    <th>Vat</th>
+                    <th>Gross</th>
+                    <th>Description</th>
+                    <th>Account Code</th>
+                    <th>Account Name</th>
+                    <th>Status</th>
+                </tr>
+                <tbody id="accountCodeInvoicesTableInput">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="Container">
+            <h3>Create</h3>
+            <p>To add a new Invoice to an Account please use the following.</p>
+            <p id="createErrorInvoice"></p>
+
+            <form action="javascript:void(0);" method="POST" onsubmit="addItemInvoice()">
+                <input type="text" id="add-accountCodeInvoice" placeholder="Account Code" />
+                <input type="text" id="add-invoiceNumber" placeholder="Invoice Number" />
+                <input type="date" id="add-invoiceDate" placeholder="Date" />
+                <input type="date" id="add-invoiceDueDate" placeholder="invoiceDueDate" />
+                <input type="text" id="add-net" placeholder="Net" />
+                <input type="text" id="add-vat" placeholder="Vat" />
+                <input type="text" id="add-gross" placeholder="Gross" />
+                <input type="text" id="add-description" placeholder="Description" />
+                <select id="add-status" placeholder="Status">
+                    <option>Cleared</option>
+                    <option>On-Hold</option>
+                    <option>Paid</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
     </main>
     <script src="./Site.js" asp-append-version="true"></script>
     <script type="text/javascript">
@@ -114,3 +195,4 @@
     </script>
 </body>
 </html>
+

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using HarrysCrudAPI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Threading.Tasks.Dataflow;
@@ -27,7 +28,7 @@ namespace HarrysCrudAPI.Controllers
         }
 
         [HttpGet]
-        [Route("Get/{id}")]
+        [Route("{id}")]
         public async Task<ActionResult<Account>> Get(int id)
         {
             var account = await _context.Accounts.FindAsync(id);
@@ -65,17 +66,22 @@ namespace HarrysCrudAPI.Controllers
                 return BadRequest("Account Not Found");
             }
 
-            account.AccountCode = request.AccountCode;
-            account.AccountName = request.AccountName;
-            account.Address = request.Address;
-            account.PhoneNumber = request.PhoneNumber;
-            account.EmailAddress = request.EmailAddress;
-            account.PaymentTerms = request.PaymentTerms;
-            account.TermsType = request.TermsType;
-
-            await _context.SaveChangesAsync();
-
-            return Ok();
+            if(ModelState.IsValid)
+            {
+                account.AccountName = request.AccountName;
+                account.Address = request.Address;
+                account.PhoneNumber = request.PhoneNumber;
+                account.EmailAddress = request.EmailAddress;
+                account.PaymentTerms = request.PaymentTerms;
+                account.TermsType = request.TermsType;
+                
+                await _context.SaveChangesAsync();
+                return Ok();
+            } else
+            {
+                return BadRequest();
+            }
+            
         }
 
         [HttpDelete("{accountCode}")]
@@ -90,7 +96,15 @@ namespace HarrysCrudAPI.Controllers
             {
                 return BadRequest("Account Not Found");
             }
+            var invoices = _context.Invoices.Where(_x => _x.AccountCode == accountCode).ToList();
+
             _context.Accounts.Remove(account);
+            
+            foreach (Invoice invoice in invoices)
+            {
+                _context.Invoices.Remove(invoice);
+            }
+
             await _context.SaveChangesAsync();
             return Ok();
         }

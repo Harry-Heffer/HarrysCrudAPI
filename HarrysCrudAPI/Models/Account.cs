@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace HarrysCrudAPI
+namespace HarrysCrudAPI.Models
 {
     public class Account
     {

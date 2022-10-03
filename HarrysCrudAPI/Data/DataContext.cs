@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HarrysCrudAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HarrysCrudAPI.Data
 {
@@ -7,5 +8,6 @@ namespace HarrysCrudAPI.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
     }
 }
