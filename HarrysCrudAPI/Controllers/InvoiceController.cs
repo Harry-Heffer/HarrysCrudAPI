@@ -29,8 +29,7 @@ namespace HarrysCrudAPI.Controllers
             var invoices = await _context.Invoices.ToListAsync();
             return Ok(invoices);
         }
-        [HttpGet]
-        [Route("{AccountCode}")]
+        [HttpGet("{AccountCode}")]
         public async Task<ActionResult<Invoice>> Get(string AccountCode)
         {
             var Invoices = await _context.Invoices.Where(x => x.AccountCode == AccountCode).ToListAsync();

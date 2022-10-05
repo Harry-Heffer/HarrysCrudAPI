@@ -27,16 +27,31 @@ namespace HarrysCrudAPI.Controllers
             return Ok(await _context.Accounts.ToListAsync());
         }
 
-        [HttpGet]
-        [Route("{id}")]
-        public async Task<ActionResult<Account>> Get(int id)
+        //[HttpGet]
+        //[Route("{id}")]
+        //public async Task<ActionResult<Account>> GetById(int id)
+        //{
+        //    var account = await _context.Accounts.FindAsync(id);
+        //    if (account == null)
+        //    {
+        //        return NotFound("Account Not Found");
+        //    }
+        //    return Ok(account);
+        //}
+
+        [HttpGet("{accountCode}")]
+        public async Task<ActionResult<Account>> GetByAccountCode(string accountCode)
         {
-            var account = await _context.Accounts.FindAsync(id);
+            var account = _context.Accounts.Where(x => x.AccountCode == accountCode).First();
+
             if (account == null)
             {
-                return NotFound("Account Not Found");
+                return NotFound();
             }
-            return Ok(account);
+            else
+            {
+                return Ok(account);
+            }
         }
 
         [HttpPost]
